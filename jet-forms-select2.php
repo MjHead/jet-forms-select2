@@ -23,9 +23,6 @@ add_action( 'plugins_loaded', function() {
 	define( 'JFB_S2_PATH', plugin_dir_path( JFB_S2__FILE__ ) );
 	define( 'JFB_S2_URL', plugins_url( '/', JFB_S2__FILE__ ) );
 
-	// Replace this with your actual field name
-	define( 'JFB_FIELD_NAME', 'field_name' );
-
 } );
 
 add_action( 'wp_enqueue_scripts', function() {
@@ -37,9 +34,9 @@ function jfb_select2_init() {
 	wp_enqueue_script( 'select2', JFB_S2_URL . 'assets/js/select2.min.js', array(), '4.0.13', true );
 	wp_add_inline_script( 'select2', '
 		( function( $ ) {
-			var $feild = $( \'select[name="' . JFB_FIELD_NAME . '"]\' );
-			if ( $feild.length ) {
-				$feild.select2();
+			var $field = $( \'select.jet-form-builder__field.form-select2\' );
+			if ( $field.length ) {
+				$field.select2();
 			}
 		}( jQuery ) );
 	' );
